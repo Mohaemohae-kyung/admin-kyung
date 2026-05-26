@@ -34,7 +34,7 @@ public class AdminUserManagementController {
             @RequestBody AdminUserDto.SuspendRequest request
     ) {
         adminUserManagementService.suspendUser(admin, userId, request.getReason());
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 
     @PostMapping("/{userId}/unsuspend")
@@ -44,6 +44,6 @@ public class AdminUserManagementController {
             @RequestBody AdminUserDto.SuspendRequest request
     ) {
         adminUserManagementService.unsuspendUser(admin, userId, request.getReason());
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 }

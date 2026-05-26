@@ -29,7 +29,7 @@ public class AdminContentController {
             @RequestBody AdminContentDto.NoticeRequest request
     ) {
         adminContentService.createNotice(admin, request);
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 
     @PatchMapping("/notices/{noticeId}")
@@ -38,13 +38,13 @@ public class AdminContentController {
             @RequestBody AdminContentDto.NoticeRequest request
     ) {
         adminContentService.updateNotice(noticeId, request);
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 
     @DeleteMapping("/notices/{noticeId}")
     public ApiResponse<Void> deleteNotice(@PathVariable Long noticeId) {
         adminContentService.deleteNotice(noticeId);
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 
     // --- Community ---
@@ -56,12 +56,12 @@ public class AdminContentController {
     @DeleteMapping("/community/posts/{postId}")
     public ApiResponse<Void> deleteCommunityPost(@PathVariable Long postId) {
         adminContentService.deleteCommunityPost(postId);
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 
     @DeleteMapping("/community/comments/{commentId}")
     public ApiResponse<Void> deleteCommunityComment(@PathVariable Long commentId) {
         adminContentService.deleteCommunityComment(commentId);
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 }

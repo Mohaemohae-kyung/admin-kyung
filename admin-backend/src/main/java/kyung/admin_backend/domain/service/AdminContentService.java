@@ -49,7 +49,8 @@ public class AdminContentService {
 
     @Transactional
     public void createNotice(User admin, AdminContentDto.NoticeRequest request) {
-        Notice notice = Notice.createNotice(admin, request.getNoticeType(), request.getTitle(), request.getContent());
+        User managedAdmin = em.find(User.class, admin.getUserId());
+        Notice notice = Notice.createNotice(managedAdmin, request.getNoticeType(), request.getTitle(), request.getContent());
         em.persist(notice);
     }
 

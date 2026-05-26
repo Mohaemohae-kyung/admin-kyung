@@ -99,7 +99,8 @@ public class AdminUserManagementService {
 
         u.suspend(); // Set status = 'SUSPENDED'
 
-        AdminAction log = AdminAction.create(admin, "USER", userId, "SUSPEND", reason);
+        User managedAdmin = em.find(User.class, admin.getUserId());
+        AdminAction log = AdminAction.create(managedAdmin, "USER", userId, "SUSPEND", reason);
         em.persist(log);
     }
 
@@ -115,7 +116,8 @@ public class AdminUserManagementService {
                 .setParameter("userId", userId)
                 .executeUpdate();
 
-        AdminAction log = AdminAction.create(admin, "USER", userId, "UNSUSPEND", reason);
+        User managedAdmin = em.find(User.class, admin.getUserId());
+        AdminAction log = AdminAction.create(managedAdmin, "USER", userId, "UNSUSPEND", reason);
         em.persist(log);
     }
 }

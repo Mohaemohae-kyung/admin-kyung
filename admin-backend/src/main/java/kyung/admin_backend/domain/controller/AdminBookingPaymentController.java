@@ -32,6 +32,6 @@ public class AdminBookingPaymentController {
             @RequestBody AdminUserDto.SuspendRequest request
     ) {
         adminBookingPaymentService.refundPayment(paymentId, request.getReason());
-        return ApiResponse.onSuccess(null);
+        return ApiResponse.onSuccess((Void) null);
     }
 }

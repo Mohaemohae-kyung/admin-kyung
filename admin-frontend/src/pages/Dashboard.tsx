@@ -69,12 +69,12 @@ export const Dashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex-1 p-8 space-y-6 animate-pulse">
+      <div className="flex-1 p-4 md:p-8 space-y-6 animate-pulse">
         <div className="flex justify-between items-center mb-6">
           <div className="h-8 w-48 bg-slate-200 rounded-lg"></div>
           <div className="h-10 w-24 bg-slate-200 rounded-lg"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="h-32 bg-slate-200 rounded-2xl"></div>
           ))}
@@ -127,16 +127,16 @@ export const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 p-8 space-y-8 overflow-y-auto max-h-screen">
+    <div className="flex-1 p-4 md:p-8 space-y-6 md:space-y-8 overflow-y-auto max-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 leading-tight">대시보드 홈</h2>
-          <p className="text-slate-500 text-sm mt-1">플랫폼 리소스 및 실시간 비즈니스 동향 모니터링</p>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">대시보드 홈</h2>
+          <p className="text-slate-500 text-xs md:text-sm mt-1">플랫폼 리소스 및 실시간 비즈니스 동향 모니터링</p>
         </div>
         <button
           onClick={fetchDashboardData}
-          className="flex items-center space-x-2 px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-200 rounded-xl transition-all duration-200 shadow-sm"
+          className="flex items-center space-x-2 px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold border border-slate-200 rounded-xl transition-all duration-200 shadow-sm w-full sm:w-auto justify-center"
         >
           <RefreshCw size={16} />
           <span>새로고침</span>
@@ -144,14 +144,14 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {statCards.map((card, idx) => (
           <div
             key={idx}
-            className="bg-white border border-slate-100 p-6 rounded-2xl shadow-sm flex items-center justify-between"
+            className="bg-white border border-slate-100 p-5 md:p-6 rounded-2xl shadow-sm flex items-center justify-between"
           >
-            <div className="space-y-1.5">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1">
+              <span className="text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider block">
                 {card.title}
               </span>
               <h3 className="text-2xl font-bold text-slate-800 leading-none">{card.value}</h3>

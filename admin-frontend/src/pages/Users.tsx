@@ -116,9 +116,9 @@ export const Users: React.FC = () => {
   }, [searchQuery]);
 
   return (
-    <div className="flex-1 flex overflow-hidden h-screen bg-slate-50">
+    <div className="flex-1 flex flex-col lg:flex-row overflow-hidden h-screen bg-slate-50">
       {/* Main Panel */}
-      <div className="flex-1 flex flex-col p-8 overflow-y-auto">
+      <div className="flex-1 flex flex-col p-4 md:p-8 overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-2xl font-bold text-slate-800 leading-tight">회원 관리</h2>
@@ -220,7 +220,13 @@ export const Users: React.FC = () => {
 
       {/* Side Detail Panel (Slide over Drawer) */}
       {selectedUser && (
-        <div className="w-96 bg-white border-l border-slate-200 shadow-2xl flex flex-col h-screen overflow-y-auto animate-slide-in shrink-0 relative z-20">
+        <>
+          {/* Backdrop overlay for User Details on Mobile */}
+          <div 
+            className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-20 lg:hidden"
+            onClick={() => setSelectedUser(null)}
+          />
+          <div className="fixed lg:relative inset-y-0 right-0 z-30 w-full sm:w-96 bg-white border-l border-slate-200 shadow-2xl flex flex-col h-screen overflow-y-auto animate-slide-in shrink-0">
           {/* Header */}
           <div className="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
             <h3 className="font-bold text-slate-800 flex items-center space-x-2">
@@ -358,6 +364,7 @@ export const Users: React.FC = () => {
             </div>
           )}
         </div>
+        </>
       )}
 
       {/* Confirmation Modal */}

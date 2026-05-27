@@ -130,20 +130,20 @@ export const BookingsPayments: React.FC = () => {
   );
 
   return (
-    <div className="flex-1 flex flex-col p-8 bg-slate-50 overflow-y-auto max-h-screen">
+    <div className="flex-1 flex flex-col p-4 md:p-8 bg-slate-50 overflow-y-auto max-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 leading-tight">예약 및 결제 관리</h2>
-          <p className="text-slate-500 text-sm mt-1">실시간 예약 일정 관리 및 매출/환불 처리 프로세스 제어</p>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">예약 및 결제 관리</h2>
+          <p className="text-slate-500 text-xs md:text-sm mt-1">실시간 예약 일정 관리 및 매출/환불 처리 프로세스 제어</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-200 mb-6">
+      <div className="flex border-b border-slate-200 mb-6 overflow-x-auto w-full whitespace-nowrap scrollbar-hide">
         <button
           onClick={() => setActiveTab('bookings')}
-          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none ${
+          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none shrink-0 ${
             activeTab === 'bookings'
               ? 'border-indigo-600 text-indigo-600 bg-white/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -154,7 +154,7 @@ export const BookingsPayments: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('payments')}
-          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none ${
+          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none shrink-0 ${
             activeTab === 'payments'
               ? 'border-indigo-600 text-indigo-600 bg-white/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'

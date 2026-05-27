@@ -189,20 +189,20 @@ export const Content: React.FC = () => {
   );
 
   return (
-    <div className="flex-1 flex flex-col p-8 bg-slate-50 overflow-y-auto max-h-screen">
+    <div className="flex-1 flex flex-col p-4 md:p-8 bg-slate-50 overflow-y-auto max-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 leading-tight">콘텐츠 관리</h2>
-          <p className="text-slate-500 text-sm mt-1">공지사항 시스템 제어 및 부적절한 커뮤니티 게시글 모니터링</p>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">콘텐츠 관리</h2>
+          <p className="text-slate-500 text-xs md:text-sm mt-1">공지사항 시스템 제어 및 부적절한 커뮤니티 게시글 모니터링</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-200 mb-6">
+      <div className="flex border-b border-slate-200 mb-6 overflow-x-auto w-full whitespace-nowrap scrollbar-hide">
         <button
           onClick={() => setActiveTab('notices')}
-          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none ${
+          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none shrink-0 ${
             activeTab === 'notices'
               ? 'border-indigo-600 text-indigo-600 bg-white/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -213,7 +213,7 @@ export const Content: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('community')}
-          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none ${
+          className={`flex items-center space-x-2 px-6 py-3.5 font-semibold text-sm border-b-2 transition-all duration-200 outline-none shrink-0 ${
             activeTab === 'community'
               ? 'border-indigo-600 text-indigo-600 bg-white/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -432,7 +432,7 @@ export const Content: React.FC = () => {
         <div className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 flex items-center justify-center px-4">
           <form
             onSubmit={handleNoticeSubmit}
-            className="w-full max-w-2xl bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl space-y-6 animate-scale-in"
+            className="w-full max-w-2xl bg-white rounded-3xl p-5 md:p-8 border border-slate-200 shadow-2xl space-y-6 animate-scale-in"
           >
             <div className="flex justify-between items-center pb-4 border-b border-slate-100">
               <h4 className="font-bold text-slate-800 text-lg flex items-center space-x-2">

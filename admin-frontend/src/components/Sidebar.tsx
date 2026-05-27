@@ -7,15 +7,22 @@ import {
   FileText, 
   CreditCard, 
   LogOut, 
-  ShieldCheck 
+  ShieldCheck,
+  X
 } from 'lucide-react';
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
+    if (onClose) onClose();
     navigate('/login');
   };
 
@@ -27,16 +34,27 @@ export const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-100 flex flex-col h-screen sticky top-0 border-r border-slate-800">
+    <aside className={`fixed lg:sticky top-0 left-0 z-50 w-64 bg-slate-900 text-slate-100 flex flex-col h-screen border-r border-slate-800 transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       {/* Brand Header */}
-      <div className="p-6 border-b border-slate-800 flex items-center space-x-3">
-        <div className="bg-indigo-600 p-2 rounded-lg text-white">
-          <ShieldCheck size={24} />
+      <div className="p-6 border-b border-slate-800 flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="bg-indigo-600 p-2 rounded-lg text-white">
+            <ShieldCheck size={24} />
+          </div>
+          <div>
+            <h1 className="font-bold text-lg leading-tight">Mohaemohae</h1>
+            <span className="text-xs text-indigo-400 font-semibold tracking-wider uppercase">Admin Center</span>
+          </div>
         </div>
-        <div>
-          <h1 className="font-bold text-lg leading-tight">Mohaemohae</h1>
-          <span className="text-xs text-indigo-400 font-semibold tracking-wider uppercase">Admin Center</span>
-        </div>
+
+        {/* Close Button on Mobile */}
+        <button
+          onClick={onClose}
+          className="lg:hidden p-2 rounded-xl text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors focus:outline-none"
+          aria-label="메뉴 닫기"
+        >
+          <X size={20} />
+        </button>
       </div>
 
       {/* Navigation */}
@@ -45,6 +63,7 @@ export const Sidebar: React.FC = () => {
           <NavLink
             key={item.to}
             to={item.to}
+            onClick={onClose}
             className={({ isActive }) =>
               `flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
                 isActive
